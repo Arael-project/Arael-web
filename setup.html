@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setup | Arael</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="setup.html">Setup</a></li>
+                <li><a href="usage.html">Usage</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Setup</h1>
+        <!-- ───────────── MAIN content in setup.html ───────────── -->
+        <h2 style="text-align:center;">One-click install</h2>
+
+        <div id="install-wrapper" class="download-card">
+            <button id="install-btn" class="install-btn">Download Arael</button>
+            <small id="install-hint"></small>
+        </div>
+
+        <p class="maintext">
+            Prefer building from source? Scroll down for the <code>go install</code> command.
+        </p>
+        <!-- ────────────────────────────────────────────────────────── -->
+
+
+        <h2 style="text-align:center;">Config file <code>headers.txt</code></h2>
+
+        <div class="box">
+            Remember, Do NOT share your instagram headers/cookies with anyone, as it could result in compromising your
+            account.
+        </div>
+
+        <p class="maintext">
+            1&nbsp;• From your browser’s DevTools copy these atributes:
+            <br><br><code>User-Agent</code> <br><code>X-Ig-App-Id</code><br><code>Cookie</code><br><br>
+            The most important bits from the cookies are sessionid and crfstoken. Ig app id is usually not changing, so
+            there isn't a need to swap it out that often. We reccomend pasting the whole cookies part, because what works
+            right now might not work in the future, this way, you can ensure atleast a bit that it will be working in
+            the future still.<br><br>
+            If you're unsure what exactly, you can take the whole headers part. <span class="subtle-underline">Note that when you do, you need to
+            change the <code>Accept-Encoding</code> to be only gzip.</span><br><br>
+            2&nbsp;• Paste your headers inside a file located here: ~/.config/arael/headers.txt (below is a quick
+            command to create the directory and the file)
+        </p>
+
+        <div class="copy-box">
+            <span class="copy-text">mkdir -p ~/.config/arael && touch ~/.config/arael/headers.txt</span>
+            <button class="copy-btn">copy!</button>
+        </div>
+
+        <p class="maintext">
+            Example content: <br>
+            <span class="copy-text">
+                User-Agent: Instagram 310.0.0.42.119 Android<br>
+                X-Ig-App-Id: 936619743392459<br>
+                Cookie: sessionid=YOUR_SESSION_ID; crfstoken=YOUR_CRFS_TOKEN...
+            </span>
+        </p>
+
+        <p class="maintext">
+            Arael loads this file automatically at start-up. If you get an error, check your headers again or paste in
+            the whole headers segment.
+        </p>
+
+        <!-- ── Source install (keep in Setup page) ────────────────────────────── -->
+        <h2 style="text-align:center;">Build from source</h2>
+
+        <div class="copy-box">
+            <span class="copy-text">go install github.com/yourname/arael/cmd/arael@latest</span>
+            <button class="copy-btn">copy!</button>
+        </div>
+        <div class="copy-box">
+            <span class="copy-text">git clone https://github.com/git/url</span>
+            <button class="copy-btn">copy!</button>
+        </div>
+
+        <!-- ─────────────────────────────────────────────────────── -->
+
+    </main>
+
+    <footer>
+        <p>© 2025 Arael. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

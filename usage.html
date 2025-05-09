@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usage | Arael</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="setup.html">Setup</a></li>
+                <li><a href="usage.html">Usage</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- ───────────── MAIN content in usage.html ───────────── -->
+        <h1>Usage examples</h1>
+
+        <div class="box">
+            Arael is still in development. New features will definitely be added soon!
+        </div>
+
+        <p class="maintext">
+            Arael has two primary sub-commands: <code>fetch</code> and <code>compare</code>.
+        </p>
+
+        <!-- ==== FETCH ==== -->
+        <h2 style="text-align:center;">1. arael fetch</h2>
+
+        <p class="maintext">
+            Prints either the followers or the following list of one account.
+        </p>
+
+        <div class="copy-box">
+            <span class="copy-text">arael fetch -u nasa --followers</span>
+            <button class="copy-btn">copy!</button>
+        </div>
+
+        <p class="maintext">
+            • <strong>-u / --username</strong> — target account<br>
+            • <strong>--followers</strong> — print followers<br>
+            • <strong>--following</strong> — print following (default)
+        </p>
+
+        <!-- ==== COMPARE ==== -->
+        <h2 style="text-align:center;">2. arael compare</h2>
+
+        <p class="maintext">
+            Finds overlapping followers / following between two or more accounts.
+        </p>
+
+        <div class="copy-box">
+            <span class="copy-text">arael compare -u nasa,esa --followers</span>
+            <button class="copy-btn">copy!</button>
+        </div>
+
+        <p class="maintext">
+            • <strong>-u / --usernames</strong> — comma-separated list<br>
+            • <strong>--followers</strong> or <strong>--following</strong> — choose one
+        </p>
+
+        <!-- ==== TIPS ==== -->
+        <div class="box">
+            For accounts with large number of followers/following you might need to run the script multiple times, as
+            instagram API isnt the most reliable and most likely wont give you the whole list on the first run.
+        </div>
+
+        <p class="maintext">
+            Run <code>arael&nbsp;[command]&nbsp;--help</code> for the full list of switches.
+        </p>
+        <!-- ─────────────────────────────────────────────────────── -->
+
+    </main>
+
+    <footer>
+        <p>© 2025 Arael. All rights reserved.</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
