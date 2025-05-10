@@ -42,17 +42,17 @@ document.querySelectorAll('.glow-hover').forEach(el => {
 
     if (/Win/.test(platform)) {
         label = 'Download for Windows';
-        url = 'https://github.com/yourname/arael/releases/latest/download/arael_windows_amd64.zip';
+        url = 'https://github.com/user-attachments/files/20137170/arael_windows_amd64.zip';
     } else if (/Mac/.test(platform)) {
         label = 'Download for macOS';
-        url = 'https://github.com/yourname/arael/releases/latest/download/arael_macos_universal.tar.gz';
+        url = 'https://github.com/user-attachments/files/20137169/arael_macos_universal.tar.gz';
     } else if (/Linux/.test(platform)) {
         if (/aarch64|arm/.test(userAgent)) {
             label = 'Download for Linux ARM64';
-            url = 'https://github.com/yourname/arael/releases/latest/download/arael_linux_arm64.tar.gz';
+            url = 'https://github.com/user-attachments/files/20137168/arael_linux_amd64.tar.gz';
         } else {
             label = 'Download for Linux AMD64';
-            url = 'https://github.com/yourname/arael/releases/latest/download/arael_linux_amd64.tar.gz';
+            url = 'https://github.com/user-attachments/files/20137168/arael_linux_amd64.tar.gz';
         }
     }
 
@@ -62,7 +62,7 @@ document.querySelectorAll('.glow-hover').forEach(el => {
     } else {
         btn.textContent = 'Open download page';
         btn.addEventListener('click', () =>
-            window.location.href = 'https://github.com/yourname/arael/releases/latest'
+            window.location.href = 'https://github.com/Arael-project/Arael-Cli/releases/latest'
         );
     }
 })();
