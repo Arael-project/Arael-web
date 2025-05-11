@@ -3,6 +3,13 @@
     --bg-dark-alt: #1e1e1e;
     --accent: #00bcd4;
     --text-light: #ffffff;
+    --header-height: 64px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
 }
 
 html,
@@ -19,26 +26,26 @@ body {
 }
 
 header {
-    background: var(--bg-dark-alt);
-    padding: 15px 0;
     position: fixed;
-    width: 100%;
     top: 0;
     left: 0;
+    width: 100%;
+    height: var(--header-height);
+    background: var(--bg-dark-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
     z-index: 1000;
 }
 
+/* ---------- NAV ---------- */
 nav ul {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
     gap: 20px;
-}
-
-nav ul li {
-    display: inline-block;
 }
 
 nav ul li a {
@@ -49,7 +56,7 @@ nav ul li a {
     font-size: 18px;
     padding: 12px 20px;
     border-radius: 20px;
-    transition: .3s;
+    transition: background .3s, transform .3s;
 }
 
 nav ul li a:hover {
@@ -57,84 +64,103 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-footer {
-    background: var(--bg-dark-alt);
-    text-align: center;
-    padding: 10px;
-    width: 100%;
+/* Hamburger */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    position: absolute;
+    right: 20px;
+    top: calc((var(--header-height)-25px)/2);
+    cursor: pointer;
+    z-index: 1001;
 }
 
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background: var(--text-light);
+    transition: transform .4s, opacity .4s;
+}
+
+.menu-toggle.open .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* ---------- LAYOUT ---------- */
 main {
     display: grid;
     gap: 20px;
-    padding: 100px 20px 40px;
+    padding: calc(var(--header-height) + 40px) 20px 40px;
+    justify-items: center;
 }
 
 h1 {
-    padding: 5px;
-    font-size: 100px;
+    font-size: clamp(32px, 8vw, 100px);
+    margin: 0 auto;
     text-align: center;
 }
 
-.maintext {
-    min-width: 500px;
-    max-width: 800px;
-    min-height: 80px;
-    padding: 30px 30px 30px 20px;
-    font-size: 20px;
-    background: var(--bg-dark-alt);
-    border-radius: 10px;
-    place-self: center;
-    text-align: left;
-}
-
-.arael {
-    place-self: center;
-    width: 50vw;
-    max-width: 750px;
-    height: auto;
-}
-
-.box {
-    min-width: 500px;
+/* ---------- BOXES ---------- */
+.maintext,
+.box,
+.copy-box {
+    width: 100%;
     max-width: 800px;
     padding: 20px;
     background: var(--bg-dark-alt);
-    color: var(--text-light);
+    border-radius: 10px;
+    font-size: clamp(16px, 4vw, 20px);
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    place-self: center;
-    border-radius: 10px;
-    font-size: 20px;
-    border: 5px solid salmon;
     text-align: left;
+    gap: 12px;
+}
+
+.maintext {
+    min-height: 80px;
+    flex-direction: column;
+}
+
+.box {
+    border: 5px solid salmon;
 }
 
 .copy-box {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    min-width: 700px;
-    max-width: 800px;
-    padding: 10px 10px 10px 20px;
     border: 5px solid steelblue;
-    border-radius: 10px;
-    background-color: #1b1b1b;
-    font-size: 20px;
-    place-self: center;
-    text-align: left;
+    justify-content: space-between;
 }
 
+.maintext {
+    min-height: 80px;
+    flex-direction: column;
+}
+
+.box {
+    border: 5px solid salmon;
+}
+
+.copy-box {
+    border: 5px solid steelblue;
+    justify-content: space-between;
+}
+
+/* ---------- COPY ---------- */
 .copy-text {
-    flex-grow: 1;
     font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
-    font-size: .95em;
-    padding: 2px 6px;
-    border-radius: 4px;
-    line-height: 1.4;
-    white-space: nowrap;
     overflow-x: auto;
+    white-space: nowrap;
+    flex: 1 1 auto;
+    min-width: 0;
+    font-size: .95em;
 }
 
 .copy-btn {
@@ -145,13 +171,103 @@ h1 {
     padding: 10px;
     color: gray;
     transition: color .3s;
-    margin-left: auto;
+    flex-shrink: 0;
 }
 
 .copy-btn:hover {
     color: steelblue;
 }
 
+/* ---------- MEDIA ---------- */
+@media(max-width:768px) {
+    nav ul {
+        position: absolute;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--bg-dark-alt);
+        display: none;
+        padding: 20px 0;
+        text-align: center;
+        gap: 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li {
+        padding: 15px 0;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .maintext,
+    .box,
+    .copy-box {
+        width: 94vw;
+    }
+}
+
+@media(max-width:600px) {
+
+    .maintext,
+    .box,
+    .copy-box {
+        width: 98vw;
+    }
+}
+
+@media(max-width:480px) {
+
+    .maintext,
+    .box,
+    .copy-box {
+        font-size: clamp(14px, 4.5vw, 18px);
+    }
+
+    .copy-btn {
+        padding: 8px;
+    }
+
+    .arael {
+        width: min(60vw, 280px);
+    }
+
+    h1 {
+        font-size: clamp(28px, 10vw, 72px);
+    }
+}
+
+@media(max-width:360px) {
+
+    .maintext,
+    .box,
+    .copy-box {
+        font-size: clamp(12px, 5vw, 16px);
+    }
+
+    .arael {
+        width: min(80vw, 220px);
+    }
+
+    nav ul li a {
+        padding: 10px 14px;
+        font-size: 16px;
+    }
+}
+
+/* ---------- MEDIA / IMAGES ---------- */
+.arael {
+    width: min(60vw, 750px);
+    height: auto;
+    margin: 0 auto;
+}
+
+/* ---------- MISC ---------- */
 .install-btn {
     background: #0069ff;
     color: #fff;
@@ -167,53 +283,18 @@ h1 {
     filter: brightness(1.1);
 }
 
-.download-card {
-    padding: 24px;
+footer {
+    background: var(--bg-dark-alt);
     text-align: center;
-}
-
-.subtle-underline {
-    text-decoration-line: underline;
-    text-decoration-thickness: 2px;
-    text-underline-offset: .15em;
-    text-decoration-color: red;
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    z-index: 1001;
-}
-
-.menu-toggle.open .bar:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.open .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.open .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-.bar {
-    background-color: var(--text-light);
-    height: 3px;
-    width: 25px;
-    margin: 4px 0;
-    transition: .4s;
+    padding: 10px;
+    width: 100%;
 }
 
 .feature-card {
     background: var(--bg-dark-alt);
     padding: 30px;
     margin: 20px auto;
-    max-width: 800px;
+    width: min(90vw, 800px);
     border-radius: 15px;
     border: 2px solid var(--accent);
     box-shadow: 0 0 10px #00bcd4a2;
@@ -233,102 +314,12 @@ h1 {
     transform: translate(-50%, -50%);
     width: 200px;
     height: 200px;
-    pointer-events: none;
     background: radial-gradient(circle, rgba(0, 188, 212, .3) 0%, transparent 80%);
-    transition: opacity .3s;
     opacity: 0;
-    z-index: 0;
+    transition: opacity .3s;
+    pointer-events: none;
 }
 
 .glow-hover:hover::before {
     opacity: 1;
-}
-
-@media(max-width:768px) {
-
-    .maintext,
-    .box,
-    .copy-box {
-        width: 90%;
-        min-width: unset;
-    }
-
-    .arael {
-        max-width: 100%;
-        height: auto;
-        display: block;
-        margin: 0 auto;
-    }
-
-    .copy-btn {
-        flex-shrink: 0;
-        white-space: nowrap;
-    }
-
-    h1 {
-        font-size: clamp(32px, 8vw, 100px);
-    }
-
-    nav ul {
-        flex-direction: column;
-        background-color: var(--bg-dark-alt);
-        position: absolute;
-        top: 30px;
-        left: 0;
-        right: 0;
-        display: none;
-        text-align: center;
-        gap: 0;
-    }
-
-    nav ul.active {
-        display: flex;
-    }
-
-    nav ul li {
-        padding: 15px 0;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-}
-
-@media(max-width:480px) {
-
-    .maintext,
-    .box,
-    .copy-box {
-        width: 94%;
-        font-size: 18px;
-    }
-
-    .arael {
-        width: 60vw;
-        max-width: 280px;
-    }
-
-    h1 {
-        font-size: clamp(28px, 10vw, 72px);
-    }
-}
-
-@media(max-width:360px) {
-
-    .maintext,
-    .box,
-    .copy-box {
-        width: 100%;
-        font-size: 16px;
-    }
-
-    .arael {
-        width: 80vw;
-        max-width: 220px;
-    }
-
-    nav ul li a {
-        padding: 10px 14px;
-        font-size: 16px;
-    }
 }
