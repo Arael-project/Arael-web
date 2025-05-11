@@ -1,33 +1,33 @@
-/* 🌑 GENERAL STYLES */
-body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
-    background: linear-gradient(to bottom, #121212, #333333);
-    display: grid;
-    /* Enables grid layout */
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #121212;
-    /* Dark theme background */
-    color: white;
-    /* White text for contrast */
+:root {
+    --bg-dark: #121212;
+    --bg-dark-alt: #1e1e1e;
+    --accent: #00bcd4;
+    --text-light: #ffffff;
 }
 
-/* 📌 HEADER (Fixed Top Navigation Bar) */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(to bottom, var(--bg-dark), #333333);
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    display: grid;
+    overflow-x: hidden;
+}
+
 header {
-    background: #1e1e1e;
-    /* Dark gray background */
+    background: var(--bg-dark-alt);
     padding: 15px 0;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     z-index: 1000;
-    /* Ensures it stays above other content */
 }
 
-/* 📌 NAVIGATION BAR */
 nav ul {
     list-style: none;
     padding: 0;
@@ -35,169 +35,108 @@ nav ul {
     display: flex;
     justify-content: center;
     gap: 20px;
-    /* Space between buttons */
 }
 
-/* 📌 NAVIGATION BUTTONS */
 nav ul li {
     display: inline-block;
 }
 
 nav ul li a {
     display: inline-block;
-    background: #00bcd4;
-    /* Bright cyan color */
-    color: white;
+    background: var(--accent);
+    color: var(--text-light);
     text-decoration: none;
     font-size: 18px;
     padding: 12px 20px;
     border-radius: 20px;
-    /* Rounded corners */
-    transition: 0.3s;
+    transition: .3s;
 }
 
-/* 🖱️ NAVIGATION HOVER EFFECT */
 nav ul li a:hover {
     background: #008ba3;
-    /* Darker shade of cyan */
     transform: scale(1.05);
 }
 
-/* 📌 FOOTER */
 footer {
-    background: #1e1e1e;
-    /* Dark gray background */
+    background: var(--bg-dark-alt);
     text-align: center;
     padding: 10px;
     width: 100%;
-    bottom: 0;
 }
 
-/* 🖼️ MAIN CONTENT CONTAINER */
 main {
     display: grid;
-    /* Centers everything inside */
     gap: 20px;
-    /* Spacing between elements */
-    padding: 100px;
-    /* Prevents content from being hidden under fixed header */
+    padding: 100px 20px 40px;
 }
 
-/* 📌 MAIN HEADER */
 h1 {
     padding: 5px;
     font-size: 100px;
     text-align: center;
 }
 
-/* 📌 MAIN TEXT STYLING */
 .maintext {
     min-width: 500px;
-    /* Minimum width */
     max-width: 800px;
-    /* Maximum width */
     min-height: 80px;
-    /* Fixed height */
-    padding: 30px;
+    padding: 30px 30px 30px 20px;
     font-size: 20px;
-    background: #1e1e1e;
-    /* Dark box background */
+    background: var(--bg-dark-alt);
     border-radius: 10px;
     place-self: center;
-    /* Centers in the grid */
     text-align: left;
-    /* Align text to the left */
-    padding-left: 20px;
-    /* Adds space on the left */
 }
 
-/* 📌 SVG IMAGE STYLING */
-/* ----------  styles.css  ---------- */
 .arael {
     place-self: center;
     width: 50vw;
-    /* 30 % šířky viewportu = stále stejná fyzická šířka */
     max-width: 750px;
-    /* pojistka, aby nebyla moc velká na 4K monitorech */
     height: auto;
-    /* zachová poměr stran */
 }
 
-
-/* 📌 GENERAL BOX STYLING */
 .box {
     min-width: 500px;
-    /* Minimum width */
     max-width: 800px;
     padding: 20px;
-    background-color: #1e1e1e;
-    /* Dark background */
-    color: white;
+    background: var(--bg-dark-alt);
+    color: var(--text-light);
     display: flex;
     align-items: center;
-    /* Center text vertically */
     justify-content: flex-start;
-    /* Align text to the left */
     place-self: center;
-    /* Centers in the grid */
     border-radius: 10px;
-    /* Rounded corners */
     font-size: 20px;
     border: 5px solid salmon;
-    /* Border color */
     text-align: left;
-    /* Align text to the left */
-    padding-left: 20px;
-    /* Adds space on the left */
 }
 
-/* 📌 COPY BOX STYLING */
 .copy-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     min-width: 700px;
-    /* Minimum width */
     max-width: 800px;
-    padding: 10px;
+    padding: 10px 10px 10px 20px;
     border: 5px solid steelblue;
-    /* Border color */
     border-radius: 10px;
     background-color: #1b1b1b;
-    /* Dark background */
     font-size: 20px;
     place-self: center;
-    /* Centers in the grid */
     text-align: left;
-    /* Align text to the left */
-    padding-left: 20px;
-    /* Adds space on the left */
 }
 
-/* 📌 COPY TEXT */
-/* COPY TEXT  ── code-style appearance */
 .copy-text {
     flex-grow: 1;
-    /* already there */
-    font-family: ui-monospace,
-        /* modern system monospace stack */
-        SFMono-Regular,
-        Menlo, Consolas,
-        "Liberation Mono",
-        monospace;
-    font-size: 0.95em;
-    /* slightly smaller to mimic <code> */
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, 'Liberation Mono', monospace;
+    font-size: .95em;
     padding: 2px 6px;
-    /* inline “pill” feel */
     border-radius: 4px;
     line-height: 1.4;
     white-space: nowrap;
-    /* keep long commands on one line */
     overflow-x: auto;
-    /* but allow horizontal scroll if needed */
 }
 
-/* 📌 COPY BUTTON */
 .copy-btn {
     background: none;
     border: none;
@@ -205,17 +144,14 @@ h1 {
     font-size: 15px;
     padding: 10px;
     color: gray;
-    transition: color 0.3s ease;
+    transition: color .3s;
     margin-left: auto;
-    /* Pushes button to the right */
 }
 
-/* 🖱️ COPY BUTTON HOVER EFFECT */
 .copy-btn:hover {
     color: steelblue;
 }
 
-/* Download / install button */
 .install-btn {
     background: #0069ff;
     color: #fff;
@@ -224,6 +160,7 @@ h1 {
     font-size: 18px;
     border-radius: 8px;
     cursor: pointer;
+    transition: filter .3s;
 }
 
 .install-btn:hover {
@@ -236,14 +173,10 @@ h1 {
 }
 
 .subtle-underline {
-    /* modern underline you can tweak any time */
     text-decoration-line: underline;
     text-decoration-thickness: 2px;
-    /* slightly thicker than default */
-    text-underline-offset: 0.15em;
-    /* leaves a small gap below text */
+    text-underline-offset: .15em;
     text-decoration-color: red;
-    /* use your accent colour */
 }
 
 .menu-toggle {
@@ -269,28 +202,27 @@ h1 {
 }
 
 .bar {
-    background-color: white;
+    background-color: var(--text-light);
     height: 3px;
     width: 25px;
     margin: 4px 0;
-    transition: 0.4s;
+    transition: .4s;
 }
 
 .feature-card {
-    background: #1e1e1e;
+    background: var(--bg-dark-alt);
     padding: 30px;
     margin: 20px auto;
     max-width: 800px;
     border-radius: 15px;
-    border: 2px solid #00bcd4;
+    border: 2px solid var(--accent);
     box-shadow: 0 0 10px #00bcd4a2;
 }
 
-/* Glow effect container (we'll apply this to box elements) */
 .glow-hover {
     position: relative;
     overflow: hidden;
-    transition: background 0.3s ease;
+    transition: background .3s;
 }
 
 .glow-hover::before {
@@ -302,8 +234,8 @@ h1 {
     width: 200px;
     height: 200px;
     pointer-events: none;
-    background: radial-gradient(circle, rgba(0, 188, 212, 0.3) 0%, transparent 80%);
-    transition: opacity 0.3s ease;
+    background: radial-gradient(circle, rgba(0, 188, 212, .3) 0%, transparent 80%);
+    transition: opacity .3s;
     opacity: 0;
     z-index: 0;
 }
@@ -312,34 +244,13 @@ h1 {
     opacity: 1;
 }
 
-
-
-/* 📱 RESPONSIVE DESIGN FOR SMALLER SCREENS */
-@media screen and (max-width: 768px) {
-    .sidebar {
-        width: 0;
-        overflow: hidden;
-        transition: 0.3s;
-    }
-
-    .content {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .menu-btn {
-        display: block;
-    }
+@media(max-width:768px) {
 
     .maintext,
     .box,
     .copy-box {
         width: 90%;
-        /* Make elements responsive */
-    }
-
-    .menu-toggle {
-        display: flex;
+        min-width: unset;
     }
 
     .arael {
@@ -356,12 +267,11 @@ h1 {
 
     h1 {
         font-size: clamp(32px, 8vw, 100px);
-        /* dynamicky mezi 32px–100px */
     }
 
     nav ul {
         flex-direction: column;
-        background-color: #1e1e1e;
+        background-color: var(--bg-dark-alt);
         position: absolute;
         top: 30px;
         left: 0;
@@ -378,34 +288,32 @@ h1 {
     nav ul li {
         padding: 15px 0;
     }
+
+    .menu-toggle {
+        display: flex;
+    }
 }
 
-/* ───────────────────────────── 480 px */
-@media screen and (max-width: 480px) {
+@media(max-width:480px) {
 
     .maintext,
     .box,
     .copy-box {
         width: 94%;
-        min-width: unset;
-        /* pustíme minimum, ať se vejde */
         font-size: 18px;
     }
 
     .arael {
         width: 60vw;
-        /* užší obrázek */
         max-width: 280px;
     }
 
     h1 {
-        /* titulek ve vyváženém rozsahu */
         font-size: clamp(28px, 10vw, 72px);
     }
 }
 
-/* ───────────────────────────── 360 px */
-@media screen and (max-width: 360px) {
+@media(max-width:360px) {
 
     .maintext,
     .box,
@@ -420,14 +328,7 @@ h1 {
     }
 
     nav ul li a {
-        /* menší tlačítka, aby se vešla tři vedle sebe */
         padding: 10px 14px;
         font-size: 16px;
     }
-}
-
-
-html,
-body {
-    overflow-x: hidden;
 }
